@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: True
+  
+  tasks:
+    - name: install docker
+      yum:
+        name: docker 
+        state: installed 
+        update_cache: yes
+        validate_certs: yes
+   
+
