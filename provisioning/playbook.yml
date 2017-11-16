@@ -9,5 +9,10 @@
         state: installed 
         update_cache: yes
         validate_certs: yes
+    - name : start and enable docker service 
+      service:
+        name: docker 
+        state: started
+        enabled: yes
    
 
