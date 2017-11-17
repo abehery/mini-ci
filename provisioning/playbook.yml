@@ -17,6 +17,15 @@
         name: docker 
         state: started
         enabled: yes      
+        
+    - name: run mysql 
+      docker:
+        name: mydb
+        image: mysql
+        state: started
+        env:
+          MYSQL_ROOT_PASSWORD: my-secret-pw
+
     - name : run jenkis container 
       docker:
         name: mytest
@@ -26,7 +35,9 @@
         - "8080:8080"
    
     - name: build tmacat image with nginx
-      command: docker build -t tom /vagrant/Docker/tomcat
+      command: docker build -t tom /vagrant/Docker/tomcat     
+        
+
     - name : run tmacat container 
       docker:
         name: mytom
@@ -34,4 +45,4 @@
         state: started
         ports: 
         - "80:80"
-        
+    
