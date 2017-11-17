@@ -24,4 +24,14 @@
         state: started
         ports: 
         - "8080:8080"
+   
+    - name: build tmacat image with nginx
+      command: docker build -t tom /vagrant/Docker/tomcat
+    - name : run tmacat container 
+      docker:
+        name: mytom
+        image: tom 
+        state: started
+        ports: 
+        - "80:80"
         
