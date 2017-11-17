@@ -1,0 +1,11 @@
+FROM tomcat
+MAINTAINER a.mhbehery@gdocmail.com
+
+EXPOSE 80
+
+RUN  apt-get update -y && apt-get install nginx -y
+
+COPY ./config/default /etc/nginx/sites-enabled/default
+COPY ./Bash/ENTRYPOINT.sh /usr/local/tomcat/
+RUN chmod u+x ./ENTRYPOINT.sh
+ENTRYPOINT [ "./ENTRYPOINT.sh" ]

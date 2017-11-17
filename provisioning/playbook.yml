@@ -3,16 +3,25 @@
   become: True
   
   tasks:
-    - name: install docker
+    - name: install docker and docker-py  
       yum:
-        name: docker 
+        name: '{{ item }}' 
         state: installed 
         update_cache: yes
         validate_certs: yes
+      with_items:
+        - docker
+        - python-docker-py.noarch
     - name : start and enable docker service 
       service:
         name: docker 
         state: started
-        enabled: yes
-   
-
+        enabled: yes      
+    - name : run jenkis container 
+      docker:
+        name: mytest
+        image: docker.io/jenkins 
+        state: started
+        ports: 
+        - "8080:8080"
+        
