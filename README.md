@@ -6,9 +6,10 @@ provisioning by ansible : \
         1 - mysql \
         2 - jenkis \
         3 - tomcat with nginx  \
-    
-cmd : \
- - vagrant up \
-
- connect : localhost:8080 >> jenkis \
-         : localhost:9090 >> tomcat \
+## Run
+```    
+vagrant up 
+```
+ ## connect
+  localhost:8080 >> jenkis \
+  localhost:9090 >> tomcat 
